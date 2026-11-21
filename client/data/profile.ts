@@ -6,9 +6,9 @@ export const PROFILE = {
   summary:
     "Junior Full Stack Developer with professional internship experience building and enhancing web applications using React.js, Next.js, TypeScript, and Node.js. Experienced in REST API integration, MongoDB, real-time communication with Socket.IO, and working with existing codebases. Familiar with Git-based collaboration, debugging, and developing responsive, maintainable web interfaces.",
   links: {
-    email: "mailto:your-email@example.com",
-    github: "https://github.com/your-username",
-    linkedin: "https://linkedin.com/in/your-username",
+    email: "mailto:mishrasiddhant560@gmail.com",
+    github: "https://github.com/Sidd-is-dev/",
+    linkedin: "https://www.linkedin.com/in/siddhant-mishra-developer/",
     portfolio: "https://personal-portfolio-siddhant.vercel.app/",
     resume: "/SIDDHANT_MISHRA_FSD.pdf",
   },
