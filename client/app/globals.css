@@ -1,4 +1,3 @@
-
 @import "tailwindcss";
 
 /* =========================================
@@ -9,28 +8,28 @@
   color-scheme: dark;
 
   /* Backgrounds */
-  --background: #0B1020;
-  --surface: #111A2E;
+  --background: #0b1020;
+  --surface: #111a2e;
   --card: #172238;
-  --card-hover: #1D2A43;
+  --card-hover: #1d2a43;
 
   /* Text */
-  --foreground: #F4F7FB;
-  --muted: #A4B0C3;
-  --subtle: #77869D;
+  --foreground: #f4f7fb;
+  --muted: #a4b0c3;
+  --subtle: #77869d;
 
   /* Brand colors */
-  --primary: #8B5CF6;
-  --primary-hover: #7C3AED;
-  --primary-foreground: #FFFFFF;
+  --primary: #8b5cf6;
+  --primary-hover: #7c3aed;
+  --primary-foreground: #ffffff;
 
-  --secondary: #38BDF8;
-  --success: #34D399;
+  --secondary: #38bdf8;
+  --success: #34d399;
 
   /* UI */
-  --border: #26344D;
+  --border: #26344d;
   --input: #172238;
-  --ring: #8B5CF6;
+  --ring: #8b5cf6;
 
   /* Effects */
   --shadow-card: 0 8px 30px rgb(0 0 0 / 20%);
@@ -48,25 +47,25 @@
 .light {
   color-scheme: light;
 
-  --background: #F7F8FC;
-  --surface: #FFFFFF;
-  --card: #FFFFFF;
-  --card-hover: #F0EDFA;
+  --background: #f7f8fc;
+  --surface: #ffffff;
+  --card: #ffffff;
+  --card-hover: #f0edfa;
 
   --foreground: #151827;
-  --muted: #5F687A;
-  --subtle: #818A9B;
+  --muted: #5f687a;
+  --subtle: #818a9b;
 
-  --primary: #7045DB;
-  --primary-hover: #5E35C6;
-  --primary-foreground: #FFFFFF;
+  --primary: #7045db;
+  --primary-hover: #5e35c6;
+  --primary-foreground: #ffffff;
 
-  --secondary: #0284C7;
+  --secondary: #0284c7;
   --success: #059669;
 
-  --border: #E2E5EF;
-  --input: #FFFFFF;
-  --ring: #7045DB;
+  --border: #e2e5ef;
+  --input: #ffffff;
+  --ring: #7045db;
 
   --shadow-card: 0 8px 30px rgb(20 25 50 / 6%);
   --glow-primary: 0 0 30px rgb(112 69 219 / 8%);
@@ -197,11 +196,7 @@
   }
 
   .text-gradient {
-    background: linear-gradient(
-      120deg,
-      var(--primary),
-      var(--secondary)
-    );
+    background: linear-gradient(120deg, var(--primary), var(--secondary));
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;

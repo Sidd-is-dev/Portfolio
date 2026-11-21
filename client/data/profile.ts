@@ -10,7 +10,7 @@ export const PROFILE = {
     github: "https://github.com/your-username",
     linkedin: "https://linkedin.com/in/your-username",
     portfolio: "https://personal-portfolio-siddhant.vercel.app/",
-    resume:"/SIDDHANT_MISHRA_FSD.pdf"
+    resume: "/SIDDHANT_MISHRA_FSD.pdf",
   },
-  profileImage:"/Siddhant_Mishra_DP.jpeg"
+  profileImage: "/Siddhant_Mishra_DP.jpeg",
 };

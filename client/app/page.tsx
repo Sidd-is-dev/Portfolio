@@ -7,7 +7,6 @@ import Education from "@/components/Education";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
-
 export default function HomePage() {
   return (
     <div className="relative min-h-screen overflow-x-clip bg-background text-foreground">
@@ -21,10 +20,9 @@ export default function HomePage() {
       </div>
 
       {/* Sticky Glass Navigation */}
-     <Navbar />
+      <Navbar />
 
       <main id="top">
-
         {/* Hero Section */}
         <HeroSection />
 
@@ -42,13 +40,10 @@ export default function HomePage() {
 
         {/* Contact Section */}
         <Contact />
-
       </main>
-
 
       {/* Footer Section */}
       <Footer />
-      
     </div>
   );
 }
