@@ -3,14 +3,10 @@ import Contact from "@/components/Contact";
 import Skills from "@/components/Skills";
 import Experience from "@/components/Experience";
 import Projects from "@/components/Project";
+import Education from "@/components/Education";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
-const NAV_ITEMS = [
-  { label: "Experience", href: "#experience" },
-  { label: "Projects", href: "#projects" },
-  { label: "Skills", href: "#skills" },
-  { label: "Education", href: "#education" },
-  { label: "Contact", href: "#contact" },
-];
 
 export default function HomePage() {
   return (
@@ -25,41 +21,7 @@ export default function HomePage() {
       </div>
 
       {/* Sticky Glass Navigation */}
-      <header className="sticky top-0 z-40 py-4">
-        <div className="site-container">
-          <nav
-            aria-label="Primary navigation"
-            className="glass-effect flex items-center justify-between rounded-2xl px-5 py-3"
-          >
-            <a
-              href="#top"
-              className="font-mono text-sm font-semibold tracking-tight text-foreground"
-            >
-              siddhant<span className="text-primary">.dev</span>
-            </a>
-
-            <ul className="hidden items-center gap-7 text-sm text-muted md:flex">
-              {NAV_ITEMS.map((item) => (
-                <li key={item.href}>
-                  <a
-                    href={item.href}
-                    className="transition-colors hover:text-foreground"
-                  >
-                    {item.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-
-            <a
-              href="#contact"
-              className="rounded-lg bg-primary px-3.5 py-1.5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary-hover"
-            >
-              Get in Touch
-            </a>
-          </nav>
-        </div>
-      </header>
+     <Navbar />
 
       <main id="top">
 
@@ -76,18 +38,17 @@ export default function HomePage() {
         <Skills />
 
         {/* Education Section */}
-        
+        <Education />
 
         {/* Contact Section */}
         <Contact />
+
       </main>
 
-      <footer className="border-t border-border/60 py-8">
-        <div className="site-container flex flex-col items-center justify-between gap-2 text-xs text-subtle sm:flex-row">
-          <p>{PROFILE.name} — {PROFILE.role}</p>
-          <p>{PROFILE.location}</p>
-        </div>
-      </footer>
+
+      {/* Footer Section */}
+      <Footer />
+      
     </div>
   );
 }
