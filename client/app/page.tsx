@@ -1,50 +1,8 @@
-// client/src/app/page.tsx
-
 import HeroSection from "@/components/Herosection";
 import Contact from "@/components/Contact";
 import Skills from "@/components/Skills";
 import Experience from "@/components/Experience";
-
-
-
-
-
-
-const PROJECTS = [
-  {
-    name: "HiveRadar",
-    url: "https://hiveradar.com",
-    displayUrl: "HiveRadar.com",
-    tech: ["Next.js", "TypeScript", "Tailwind CSS", "i18n", "SEO"],
-    highlights: [
-      "Developed responsive frontend interfaces using reusable, component-based architecture with Next.js and TypeScript.",
-      "Implemented internationalization (i18n) to support multilingual website experiences.",
-      "Contributed to SEO improvements through metadata configuration and on-page optimization.",
-    ],
-  },
-  {
-    name: "EProcureAI",
-    url: "https://eprocureai.com",
-    displayUrl: "eprocureai.com",
-    tech: ["Next.js", "TypeScript", "Tailwind CSS", "Node.js", "Socket.IO"],
-    highlights: [
-      "Contributed to procurement and vendor management interfaces using Next.js, TypeScript, and Tailwind CSS.",
-      "Integrated frontend components with REST APIs and MongoDB-backed application workflows.",
-      "Supported selected backend and real-time communication functionality using Node.js and Socket.IO.",
-    ],
-  },
-  {
-    name: "GetNorthPath",
-    url: "https://getnorthpath.com",
-    displayUrl: "GetNorthPath.com",
-    tech: ["Frontend Development", "API Integration", "Responsive UI"],
-    highlights: [
-      "Developed responsive website interfaces and reusable UI components for an immigration services platform.",
-      "Integrated frontend components with backend APIs to support interactive user flows and dynamic application data.",
-    ],
-  },
-];
-
+import Projects from "@/components/Project";
 const EDUCATION = [
   {
     degree: "Master of Computer Applications (MCA)",
@@ -118,6 +76,7 @@ export default function HomePage() {
       </header>
 
       <main id="top">
+        
         {/* Hero Section */}
         <HeroSection />
 
@@ -125,59 +84,7 @@ export default function HomePage() {
         <Experience />
 
         {/* Projects Section */}
-        <section id="projects" className="section-spacing border-t border-border/60">
-          <div className="site-container space-y-8">
-            <div className="space-y-2">
-              <p className="font-mono text-xs uppercase tracking-widest text-secondary">
-                Projects
-              </p>
-              <h2 className="text-2xl sm:text-3xl">Selected Work</h2>
-            </div>
-
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {PROJECTS.map((project) => (
-                <article
-                  key={project.name}
-                  className="surface-card flex flex-col justify-between p-6"
-                >
-                  <div className="space-y-4">
-                    <div className="flex items-start justify-between gap-3">
-                      <h3 className="text-xl text-foreground">{project.name}</h3>
-                      <a
-                        href={project.url}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="shrink-0 font-mono text-xs text-secondary transition-colors hover:text-primary"
-                      >
-                        {project.displayUrl} ↗
-                      </a>
-                    </div>
-
-                    <ul className="space-y-2.5 text-sm leading-relaxed text-muted">
-                      {project.highlights.map((point) => (
-                        <li key={point} className="flex items-start gap-2.5">
-                          <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
-                          <span>{point}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  <div className="mt-6 flex flex-wrap gap-2 border-t border-border/70 pt-4">
-                    {project.tech.map((tag) => (
-                      <span
-                        key={tag}
-                        className="rounded-md border border-border bg-surface px-2.5 py-1 font-mono text-xs text-muted"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
+        <Projects />
 
         {/* Technical Skills Section */}
         <Skills />
