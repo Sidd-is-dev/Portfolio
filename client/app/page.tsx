@@ -6,6 +6,7 @@ import Projects from "@/components/Project";
 import Education from "@/components/Education";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import ChatWidget from "@/components/chat/ChatWidget";
 
 export default function HomePage() {
   return (
@@ -44,6 +45,8 @@ export default function HomePage() {
 
       {/* Footer Section */}
       <Footer />
+
+      <ChatWidget />
     </div>
   );
 }

@@ -18,6 +18,6 @@ export const groqClient = new Groq({
 export const AI_MODELS = {
     embedding:"gemini-embedding-001",
     embeddingDimensions:768,
-    chat:"llama-3.3-70b-versatile"
+    chat:"openai/gpt-oss-120b"
 } as const;
 

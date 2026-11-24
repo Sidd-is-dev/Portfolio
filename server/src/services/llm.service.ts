@@ -19,8 +19,9 @@ export async function* streamChatCompletion(
             model:AI_MODELS.chat,
             messages, 
             temperature:0.2,
-            max_tokens:512,
-            stream:true
+            max_tokens:1024,
+            stream:true,
+            reasoning_effort:"low"
         },
         { signal }
     );
