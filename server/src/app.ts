@@ -3,6 +3,7 @@ import express from "express";
 import cors from "cors";
 import mongoose from "mongoose";
 import { env } from "./config/env.js";
+import { chatRouter } from "./routes/chat.routes.js";
 
 export const app = express();
 
@@ -21,3 +22,9 @@ app.get("/api/health", (_req, res) => {
     db: dbReady ? "connected" : "disconnected",
   });
 });
+
+
+
+
+app.set("trust proxy", 1);
+app.use("/api/chat", chatRouter);

@@ -1,4 +1,4 @@
-import {GoogleGenAI} from "@Google/genai";
+import {GoogleGenAI} from "@google/genai";
 import Groq from "groq-sdk";
 import {env} from "../config/env.js";
 
