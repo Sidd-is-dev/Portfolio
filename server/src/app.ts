@@ -23,6 +23,8 @@ app.get("/api/health", (_req, res) => {
   });
 });
 
+console.log(env.CLIENT_ORIGIN);
+
 
 
 

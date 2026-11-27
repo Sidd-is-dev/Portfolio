@@ -87,3 +87,43 @@ export async function SearchSimilarChunks(
     ])
 
 }
+
+function cosineSimilarity(left: number[], right: number[]): number {
+    if (left.length !== right.length) {
+        throw new Error("Cannot compare embeddings with different dimensions");
+    }
+
+    const dotProduct = left.reduce((sum, value, index) => {
+        const otherValue = right[index];
+        if (otherValue === undefined) {
+            throw new Error("Cannot compare embeddings with different dimensions");
+        }
+        return sum + value * otherValue;
+    }, 0);
+    const magnitude = Math.hypot(...left) * Math.hypot(...right);
+
+    if (magnitude === 0) {
+        throw new Error("Cannot compare an empty embedding vector");
+    }
+
+    return (1 + dotProduct / magnitude) / 2;
+}
+
+export async function SearchChunksBySection(
+    queryVector: number[],
+    section: string,
+    limit = 6
+): Promise<RetrievedChunk[]> {
+    const chunks = await Chunk.find({ "metadata.section": section })
+        .limit(limit)
+        .lean();
+
+    return chunks
+        .map((chunk) => ({
+            chunkId: chunk.chunkId,
+            content: chunk.content,
+            metadata: chunk.metadata,
+            score: Number(cosineSimilarity(queryVector, chunk.embedding).toFixed(3)),
+        }))
+        .sort((left, right) => right.score - left.score);
+}

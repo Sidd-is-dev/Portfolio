@@ -16,6 +16,7 @@ export interface UiChatMessage {
 }
 
 const MAX_HISTORY_TURNS = 6;
+const TYPING_DELAY_MS = 22;
 
 function createId(): string {
   return `${Date.now()}-${Math.random().toString(36).slice(2, 9)}`;
@@ -90,13 +91,18 @@ export function usePortfolioChat() {
             )
           );
         } else if (event.type === "token") {
-          setMessages((prev) =>
-            prev.map((m) =>
-              m.id === assistantId
-                ? { ...m, content: m.content + event.content }
-                : m
-            )
-          );
+          for (const character of Array.from(event.content)) {
+            if (controller.signal.aborted) break;
+
+            setMessages((prev) =>
+              prev.map((m) =>
+                m.id === assistantId
+                  ? { ...m, content: m.content + character }
+                  : m
+              )
+            );
+            await new Promise((resolve) => setTimeout(resolve, TYPING_DELAY_MS));
+          }
         } else if (event.type === "error") {
           setError(event.message);
           setMessages((prev) =>
