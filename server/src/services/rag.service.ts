@@ -1,6 +1,6 @@
 // server/src/services/rag.service.ts
 import { generateEmbedding } from "./embedding.service.js";
-import { SearchSimilarChunks } from "./chunk.repository.js";
+import { SearchChunksBySection, SearchSimilarChunks } from "./chunk.repository.js";
 import { buildSystemPrompt, FALLBACK_MESSAGE } from "../prompts/portfolio.prompt.js";
 import { streamChatCompletion, type ChatMessage } from "./llm.service.js";
 
@@ -43,8 +43,12 @@ export async function answerPortfolioQuery(
     // 1. Embed the visitor's question using RETRIEVAL_QUERY (asymmetric search)
   const queryVector = await generateEmbedding(question, "RETRIEVAL_QUERY");
 
-  // 2. Retrieve Top-4 semantic matches from MongoDB Atlas
-  const candidates = await SearchSimilarChunks(queryVector, { limit: 4 });
+  // Project questions should search the project records directly instead of
+  // allowing unrelated profile chunks to crowd them out of global top-K.
+  const isProjectQuestion = /\b(projects?|apps?|applications?)\b/i.test(question);
+  const candidates = isProjectQuestion
+    ? await SearchChunksBySection(queryVector, "Projects")
+    : await SearchSimilarChunks(queryVector, { limit: 4 });
 
   // Helpful during development to tune MIN_SIMILARITY_SCORE
   console.log(
@@ -53,7 +57,9 @@ export async function answerPortfolioQuery(
   );
 
   // 3. Apply similarity threshold (anti-hallucination guardrail)
-  const relevant = candidates.filter((c) => c.score >= MIN_SIMILARITY_SCORE);
+  const relevant = isProjectQuestion
+    ? candidates
+    : candidates.filter((c) => c.score >= MIN_SIMILARITY_SCORE);
 
   if (relevant.length === 0) {
     return {
